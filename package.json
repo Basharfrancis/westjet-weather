@@ -4,6 +4,7 @@
   "description": "Quick start your hapi project",
   "main": "index.js",
   "scripts": {
+    "dev": "nodemon index.js",
     "start": "node index.js",
     "test:unit": "lab --leaks -L",
     "test:acceptance": "cucumber-js --tags=@complete",
