@@ -10,11 +10,11 @@ const internals = {
     // This allows us to dynamically provide the host value to the hapi-swagger configuration.
     // ( see the ENV_K8S_NAMESPACE variable definition in the api-deployment.yml )
     namespaceHostMap: {
-        sandbox: 'sandbox-api.awesomeproduct.com',
-        dev: 'dev-api.awesomeproduct.com',
-        development: 'dev-api.awesomeproduct.com',
-        staging: 'stg-api.awesomeproduct.com',
-        production: 'api.awesomeproduct.com'
+        sandbox: 'sandbox-api.airportweatherapi.com',
+        dev: 'dev-api.airportweatherapi.com',
+        development: 'dev-api.airportweatherapi.com',
+        staging: 'stg-api.airportweatherapi.com',
+        production: 'api.airportweatherapi.com'
     }
 };
 
