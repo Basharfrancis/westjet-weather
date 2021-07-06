@@ -5,19 +5,19 @@ const { expect } = require('@hapi/code');
 
 const { describe, it } = exports.lab = Lab.script();
 
-const AirportWeatherAPIProduct = require('../../lib');
+const AirportWeatherAPI = require('../../lib');
 
-describe('AirportWeatherAPIProduct', () => {
+describe('AirportWeatherAPI', () => {
 
     it('exports a class', () => {
 
-        expect(AirportWeatherAPIProduct).to.be.a.function();
-        expect(new AirportWeatherAPIProduct()).to.be.an.object();
+        expect(AirportWeatherAPI).to.be.a.function();
+        expect(new AirportWeatherAPI()).to.be.an.object();
     });
 
     it('can be initialized with defaults', async () => {
 
-        const testInstance  = new AirportWeatherAPIProduct();
+        const testInstance  = new AirportWeatherAPI();
         await testInstance.init();
         expect(testInstance.server).to.exist();
     });
@@ -25,7 +25,7 @@ describe('AirportWeatherAPIProduct', () => {
     it('can be initialized with override configuration values', async () => {
 
         const customHostValue = '127.0.0.1';
-        const testInstance  = new AirportWeatherAPIProduct();
+        const testInstance  = new AirportWeatherAPI();
         await testInstance.init({ host: customHostValue });
         expect(testInstance.server.info.host).to.equal(customHostValue);
     });
@@ -33,7 +33,7 @@ describe('AirportWeatherAPIProduct', () => {
     it('can be started directly with override configuration values', async () => {
 
         const customHostValue = '127.0.0.1';
-        const testInstance  = new AirportWeatherAPIProduct();
+        const testInstance  = new AirportWeatherAPI();
         await testInstance.start({ host: customHostValue });
         expect(testInstance.server.info.host).to.equal(customHostValue);
         await testInstance.server.stop({ timeout: 0 });
@@ -41,14 +41,14 @@ describe('AirportWeatherAPIProduct', () => {
 
     it('protects itself from multiple initializations', async () => {
 
-        const testInstance  = new AirportWeatherAPIProduct();
+        const testInstance  = new AirportWeatherAPI();
         await testInstance.init();
         await testInstance.init();
     });
 
     it('protects itself from multiple starts', async () => {
 
-        const testInstance  = new AirportWeatherAPIProduct();
+        const testInstance  = new AirportWeatherAPI();
         await testInstance.start();
         await testInstance.start();
         await testInstance.server.stop({ timeout: 0 });
@@ -57,13 +57,13 @@ describe('AirportWeatherAPIProduct', () => {
     it('rejects initialization on invalid configuration', async () => {
 
         const customHostValue = 1234567; // an invalid integer where a hostname string is required
-        const testInstance  = new AirportWeatherAPIProduct();
+        const testInstance  = new AirportWeatherAPI();
         await expect(testInstance.init({ host: customHostValue })).to.reject(/"host" must be a string/);
     });
 
     it('can be started directly with defaults', async () => {
 
-        const testInstance  = new AirportWeatherAPIProduct();
+        const testInstance  = new AirportWeatherAPI();
         await testInstance.start();
         expect(testInstance.server).to.exist();
         expect(testInstance.server.info.started <= Date.now()).to.be.true(); // started a moment ago
@@ -73,7 +73,7 @@ describe('AirportWeatherAPIProduct', () => {
     it('can be started after being initialized with override configuration values', async () => {
 
         const customHostValue = '127.0.0.1';
-        const testInstance  = new AirportWeatherAPIProduct();
+        const testInstance  = new AirportWeatherAPI();
         await testInstance.init({ host: customHostValue });
         await testInstance.start();
         expect(testInstance.server.info.host).to.equal(customHostValue);
@@ -83,7 +83,7 @@ describe('AirportWeatherAPIProduct', () => {
 
     it('can be stopped', async () => {
 
-        const testInstance  = new AirportWeatherAPIProduct();
+        const testInstance  = new AirportWeatherAPI();
         await testInstance.init();
         await testInstance.start();
         expect(testInstance.server.info.started).to.be.greaterThan(0);

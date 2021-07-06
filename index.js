@@ -2,11 +2,11 @@
 
 const Pino = require('pino');
 const Package = require('./package');
-const AirportWeatherAPIProduct = require('./lib');
+const AirportWeatherAPI = require('./lib');
 
 const bootstrapLogger = Pino({ level: 'info' }).child({ package: Package.name });
 
-const instance = new AirportWeatherAPIProduct();
+const instance = new AirportWeatherAPI();
 
 const bootstrap = async () => {
 

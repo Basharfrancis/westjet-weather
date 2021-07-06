@@ -1,13 +1,13 @@
 'use strict';
 
 const { setWorldConstructor } = require('@cucumber/cucumber');
-const AirportWeatherAPIProduct = require('../../lib');
+const AirportWeatherAPI = require('../../lib');
 
 class CustomWorld {
 
     constructor() {
 
-        this.api = new AirportWeatherAPIProduct();
+        this.api = new AirportWeatherAPI();
     }
 
     async readyApiForTesting() {

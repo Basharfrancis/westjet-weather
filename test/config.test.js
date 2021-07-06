@@ -12,19 +12,19 @@ describe('Config', () => {
     it('should be able to map API UI DNS name based on K8S namespace value', async () => {
 
         let config = await Config.init('sandbox');
-        expect(config.settings.swaggerHost).to.be.equal('sandbox-api.airportweatherapiproduct.com');
+        expect(config.settings.swaggerHost).to.be.equal('sandbox-api.airportweatherapi.com');
 
         config = await Config.init('dev');
-        expect(config.settings.swaggerHost).to.be.equal('dev-api.airportweatherapiproduct.com');
+        expect(config.settings.swaggerHost).to.be.equal('dev-api.airportweatherapi.com');
 
         config = await Config.init('development');
-        expect(config.settings.swaggerHost).to.be.equal('dev-api.airportweatherapiproduct.com');
+        expect(config.settings.swaggerHost).to.be.equal('dev-api.airportweatherapi.com');
 
         config = await Config.init('staging');
-        expect(config.settings.swaggerHost).to.be.equal('stg-api.airportweatherapiproduct.com');
+        expect(config.settings.swaggerHost).to.be.equal('stg-api.airportweatherapi.com');
 
         config = await Config.init('production');
-        expect(config.settings.swaggerHost).to.be.equal('api.airportweatherapiproduct.com');
+        expect(config.settings.swaggerHost).to.be.equal('api.airportweatherapi.com');
     });
 
     it('can set the logging level from the process environment', async () => {
